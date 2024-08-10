@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>MY CART</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <style>
+            .product-card {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                padding: 15px;
+                border-radius: 12px;
+                transition: box-shadow 0.5s ease;
+                background-color: #fff;
+                margin-bottom: 20px;
+            }
+            .product-card:hover {
+                box-shadow: 0 0 15px rgba(219, 198, 11, 0.544);
+            }
+            .product-card img {
+                width: 100%;
+                height: 200px;
+                object-fit: contain;
+                border-radius: 10px;
+            }
+            .btn-remove-cart {
+                background-color: #ffc107;
+                border-color: #ffc107;
+                color: #212529;
+                font-weight: bold;
+            }
+            .btn-remove-cart:hover {
+                background-color: #ffca2c;
+                border-color: #ffca2c;
+                color: #212529;
+            }
+            .img-fluid {
+                cursor: pointer;
+            }
+            .container {
+                margin-top: 30px;
+            }
+            .priceAndBuyContainer {
+                margin-top: 80px;
+                margin-bottom: 30px;
+                padding: 10px;
+                background-color: #e9d712;
+                border: 1px solid #e0a606;
+                border-radius: 20px;
+                font-size: 1.5rem;
+                font-weight: bold;
+                text-align: center;
+                box-shadow: 5px 5px 5px #ccc;
+            }
+            .id {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        {{> nav}}
+        <main class="container">
+            <div class="priceAndBuyContainer d-flex justify-content-around">
+                <a href="/shop/cart/buy">
+                    <button class="buyBtn btn btn-outline-dark" type="submit">Buy Now</button></a
+                >
+            </div>
+            <div class="row">
+                {{#each cart}}
+                <div class="col-md-4">
+                    <div class="product-card" data-id="{{ this.id.id }}">
+                        <a href="/shop/product/details/{{ this.id.id }}">
+                            <img src="{{ this.id.image }}" alt="Product Image" class="img-fluid" />
+                        </a>
+                        <h5><strong>Name:</strong> {{ this.id.name }}</h5>
+                        <h5><strong>Price:</strong> ${{ this.id.price }}</h5>
+                        <h5 class="quantity">
+                            <strong>Quantity:</strong>
+                            <span class="quantity-value">{{ this.quantity }}</span>
+                        </h5>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </main>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"
+        ></script>
+        <script src="/js/cart.js"></script>
+    </body>
+</html>
